@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSEB</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logotext">KERALA STATE ELECTRICITY BOARD</h1>
+        </div>
+        <div>
+            <table class="table">
+                <caption>
+                    <h2>STREET LIGHTS</h2>
+                    <h3>
+                        <span id="status"></span>
+                    </h3>
+                </caption><br><br>
+                <tr>
+                    <th>
+                        <h3>SR.NO</h3>
+                    </th>
+                    <th>
+                        <h3>SECTOR</h3>
+                    </th>
+                    <th>
+                        <h3>ON</h3>
+                    </th>
+                    <th>
+                        <h3>OFF</h3>
+                    </th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>A</td>
+                    <td><button class="button" value="ON" onclick="sendData(this.value)">Click</button></td>
+                    <td><button class="button" value="OFF" onclick="sendData(this.value)">Click</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>B</td>
+                    <td><button class="button" value="ON" onclick="sendData(this.value)">Click </button></td>
+                    <td><button class="button" value="OFF" onclick="sendData(this.value)">Click</button></td>
+
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>C</td>
+                    <td><button class="button" value="ON" onclick="sendData(this.value)">Click</button></td>
+                    <td><button class="button" value="OFF" onclick="sendData(this.value)">Click</button></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>D</td>
+                    <td><button class="button" value="ON" onclick="sendData(this.value)">Click </button></td>
+                    <td><button class="button" value="OFF" onclick="sendData(this.value)">Click</button></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>E</td>
+                    <td><button class="button" value="ON" onclick="sendData(this.value)">Click</button></td>
+                    <td><button class="button" value="OFF" onclick="sendData(this.value)">Click</button></td>
+                </tr>
+            </table>
+            <script>
+                const sendData = async (value) => {
+                    fetch(`${window.location.protocol}//${window.location.host}/trigger`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ value })
+                    }).then(() => {
+                        document.getElementById('status').innerHTML = `CURRENT STATUS: ${value}`
+                    })
+                    document.getElementById('status').innerHTML = `CONNECTING`
+                }
+            </script>
+</body>
+
+</html>
