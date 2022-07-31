@@ -2,7 +2,7 @@ from Adafruit_IO import Client
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
-aio = Client(username='arunshenoy99', key='aio_Ebjy37sK04hivec2zfrtUr99DiYL')
+aio = Client(username='', key='')
 
 
 @app.route('/', methods=['GET'])
